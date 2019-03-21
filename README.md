@@ -2,7 +2,6 @@
 
 ## Learning Goals
 
-- Recognize the benefits of optional arguments
 - Define a method with optional arguments
 - Define a method with optional and required arguments
 
@@ -14,46 +13,33 @@ happens when they don't ask for a name? Usually, they _default_ to calling out
 the order that was placed. This may not be as personalized to you, but it's
 better than not knowing when your order is ready!
 
-In Ruby, we now see that when a method accepts arguments, those arguments become
-required; an error is thrown when those arguments are not passed in on
-invocation of the method. So what do we do when we have optional information?
+In Ruby, we've seen that when a method accepts arguments, those arguments become
+required; an error is thrown when those arguments are not passed in when the
+method is called. So what do we do when we need to tell a method that we might
+not have the information it expects?
 
-When signing up on a website, you may notice that if there are personalization
-options like a profile picture. However, when one isn't provided, it defaults to
-a generic avatar image, like a silhouette of a person.
+
+When signing up on a social media website, you may notice there are options to
+add personal information like a profile picture. However, when one isn't provided,
+it defaults to a generic avatar image, like a silhouette of a person:
 
 !["Default Facebook Avatar"](https://i.stack.imgur.com/l60Hf.png)
 
-This can be done by using optional arguments with _default_ values. We're going
-to introduce how to create methods that take in optional arguments and cover why
-they're important to programming.
+This can be done by using optional arguments with _default_ values. We could assume
+that there's a method called `display_user_image(image_url)` that defaults to this
+generic image UNLESS it's given a URL to a real image URL – your picture!
 
-## Recognize the Benefits of Optional Arguments
+!["Mark Zuckerberg, the found of Facebook"](https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg.jpg)
 
-We should constantly strive for our code to be dynamic and flexible. As
-programmers, we might be considered lazy, but why do more work than is
-necessary? We want the code we write to be re-usable, which is why we have
-principles such as DRY.
-
-If we define a method, `#greeting`, without arguments, it'll be very difficult
-to reuse this code in any other manner. Since that's way too much work for us,
-we'll define our method to take in an _argument_ of someone's name:
-
-```ruby
-def greeting(name)
-  puts "Hello, #{name}"
-end
-```
-
-But what if we don't know the name of the person we are trying to greet? We can
-make this method even more flexible by making the `name` argument optional. We
-do this by using optional, or default, arguments.
+With optional arguments, we're given the flexibility of omitting, or leaving out,
+certain data. We're going to introduce how to create methods that take in optional
+arguments and cover why they're important to programming.
 
 ## Define a Method With Optional Arguments
 
-Default arguments are easy to add, you simply assign them a default value with
-`=` ("equals") in the argument list. There's no limit to the number of arguments
-that you can make default.
+Default arguments are easy to add! You simply assign their corresponding parameters
+a value with = in the parameter list in the method signature. There's no limit to
+the number of arguments that you can make default.
 
 ```ruby
 def greeting(name="Ruby programmer", language="Ruby")
@@ -81,18 +67,25 @@ errors are thrown.
 
 It is possible to define a method that takes in both required and default
 arguments. To do so, we  place the default argument at the **end** of the
-argument list in the method definition.
-
-Take a look:
+argument list in the method definition. However, required arguments must
+still be passed in:
 
 ```ruby
 def greeting(name, language="Ruby")
   puts "Hello, #{name}. We heard you are a great #{language} programmer."
 end
+
+greeting # The method is called without arguments
 ```
 
-Let's call our `#greeting` method with and without an explicit `language`
-argument:
+If the expected arguments are not pass in, we will see an `ArgumentError`:
+
+```bash
+ArgumentError: wrong number of arguments (given 0, expected 1..2)
+```
+
+Now, let's call our `#greeting` method with a `name` given, with and
+without an explicit `language` argument:
 
 ```ruby
 greeting("Maria", "Ember.js")
@@ -102,42 +95,11 @@ greeting("Dan")
 # > Hello, Dan. We heard you are a great Ruby programmer.
 ```
 
-It works! Why must we place the default argument at the end of the argument
-list?
-
-Let's take a look at what would happen if we didn't:
-
-```ruby
-def greeting(language="Ruby", name)
-  puts "Hello, #{name}. We heard you are a great #{language} programmer."
-end
-```
-
-Now, what happens when we try to call our method without an explicit `language`
-argument?
-
-```ruby
-greeting("Maria")
-```
-You might expect it to break. Or you might expect it to think that the
-`language` variable is being set equal to `"Maria"` in this method call. 
-
-Neither of those things will happen. The method will work as we intended because
-Ruby is smart and has a few tricks up its sleeve to help determine what method
-arguments are being used where in a method's body. 
-
-However, defining the default argument first is confusing. We can understand
-this from our very reasonable expectations that the above method invocation
-would break. For this reason, it is conventional to place any default arguments
-at the end of an argument list when defining a method that takes in both
-required and default arguments. 
-
+It works! 
 
 ## Conclusion
 
-Method arguments, both required and optional, make methods powerfully abstract
-and dynamic machines that are easy to build yet very flexible and adaptable to
-different situations and requirements. Get used to defining methods with
-required and default arguments and calling them correctly.
+Method arguments, both required and optional, make methods abstract so that
+we can cover a wide variety of usages while keeping our code DRY.
 
 ## Resources
