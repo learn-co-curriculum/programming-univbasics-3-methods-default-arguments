@@ -18,18 +18,17 @@ required; an error is thrown when those arguments are not passed in when the
 method is called. So what do we do when we need to tell a method that we might
 not have the information it expects?
 
-
 When signing up on a social media website, you may notice there are options to
 add personal information like a profile picture. However, when one isn't provided,
 it defaults to a generic avatar image, like a silhouette of a person:
 
-!["Default Facebook Avatar"](https://i.stack.imgur.com/l60Hf.png)
+<img src="https://i.stack.imgur.com/l60Hf.png" alt="Default Facebook Avatar" width="200"/>
 
 This can be done by using optional arguments with _default_ values. We could assume
 that there's a method called `display_user_image(image_url)` that defaults to this
 generic image UNLESS it's given a URL to a real image URL – your picture!
 
-!["Mark Zuckerberg, the found of Facebook"](https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg.jpg)
+<img src="https://short-biography.com/wp-content/uploads/mark-zuckerberg/Mark-Zuckerberg.jpg" alt="Mark Zuckerberg, the found of Facebook" width="200"/>
 
 With optional arguments, we're given the flexibility of omitting, or leaving out,
 certain data. We're going to introduce how to create methods that take in optional
