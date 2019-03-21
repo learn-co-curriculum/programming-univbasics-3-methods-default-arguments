@@ -101,5 +101,3 @@ It works!
 
 Method arguments, both required and optional, make methods abstract so that
 we can cover a wide variety of usages while keeping our code DRY.
-
-## Resources
