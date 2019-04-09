@@ -1,4 +1,4 @@
-# Title
+# Ruby Intro: Methods Default Arguments
 
 ## Learning Goals
 
